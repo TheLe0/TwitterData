@@ -2,4 +2,4 @@
 Trabalho da disciplina de Organização de Arquivos
 
 
-Hipótese: Qual os times da NFL com mais fans no Brasil atualmente?
+Hipótese: Quais as maiores Fakenews atualmente? SObre o que as fakenws andam falando?
