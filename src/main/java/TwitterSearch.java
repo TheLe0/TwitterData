@@ -26,7 +26,7 @@ public class TwitterSearch {
     public void search() {
 
         try {
-            this.query = new Query("reforma previdencia");
+            this.query = new Query("Reforma da Previdência");
             this.query.setCount(100);
             this.result = this.twitter.search(query);
 
@@ -34,7 +34,7 @@ public class TwitterSearch {
             for (Status status : result.getTweets()) {
 
                 String text = status.getText();
-                text.replace("\n", "").replace("\r", "");
+                text = text.replaceAll("\n", "").replaceAll("\r", "");
                 arq.write(status.getId()+";"+text);
             }
         } catch(TwitterException e) {
