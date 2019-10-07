@@ -45,7 +45,7 @@ public class ArquivoTXT {
         if (this.file == null) return;
 
         try {
-            this.fw = new FileWriter(this.file);
+            this.fw = new FileWriter(this.file, true);
             this.bw = new BufferedWriter(this.fw);
 
             this.bw.write(linha);
@@ -57,7 +57,4 @@ public class ArquivoTXT {
         }
 
     }
-
-
-
 }
