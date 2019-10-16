@@ -3,7 +3,7 @@ package montaArquivos;
 import java.io.*;
 import java.net.URL;
 
-public class GeraArquivoHashtags {
+public class GeraArquivo {
 
     private String nomeArquivo;
     private FileReader reader;
@@ -12,10 +12,12 @@ public class GeraArquivoHashtags {
     private BufferedWriter bw;
     private File fileIn;
     private File fileOut;
+    private int count;
 
-    public GeraArquivoHashtags() {
+    public GeraArquivo() {
 
-        this.nomeArquivo = "hashtags.txt";
+        this.nomeArquivo = "tweets_bin.txt";
+        this.count = 0;
     }
 
     public void open() {
@@ -29,7 +31,7 @@ public class GeraArquivoHashtags {
 
     }
 
-    public void monta() throws IOException {
+    public void toBinary() throws IOException {
 
         if (this.fileIn == null || this.fileOut == null) return;
 
@@ -41,8 +43,16 @@ public class GeraArquivoHashtags {
             this.bw = new BufferedWriter(this.fw);
 
             String line;
+            StringBuilder finalLine =  new StringBuilder();
+            byte[] lineBin;
             while ((line = this.br.readLine()) != null) {
-                    this.bw.write(line);
+
+                    lineBin = (line).getBytes("UTF-8");
+                    for(byte i : lineBin) {
+                        finalLine.append(Integer.toBinaryString(i));
+                    }
+
+                    this.bw.write(String.valueOf(finalLine));
                     this.bw.newLine();
             }
         } catch(Exception e) {
