@@ -49,7 +49,7 @@ public class GeraArquivo {
 
                     lineBin = (line).getBytes("UTF-8");
                     for(byte i : lineBin) {
-                        finalLine.append(Integer.toBinaryString(i));
+                        finalLine.append(Integer.toBinaryString(i)+" ");
                     }
 
                     this.bw.write(String.valueOf(finalLine));
