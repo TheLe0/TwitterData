@@ -30,6 +30,7 @@ public class ArquivoBinario extends Arquivo{
         this.bw.close();
     }
 
+
     public void write() throws IOException {
 
         if (this.fileIn == null || this.fileOut == null) return;
@@ -44,7 +45,16 @@ public class ArquivoBinario extends Arquivo{
             String line;
             StringBuilder finalLine =  new StringBuilder();
             byte[] lineBin;
+            String[] colunas;
             while ((line = this.br.readLine()) != null) {
+
+                    colunas = line.split(";");
+
+                    this.limitFields(colunas[0], DataTypes.ID_TWITTER);
+                    this.limitFields(colunas[1], DataTypes.NAME);
+                    this.limitFields(colunas[2], DataTypes.CONTENT);
+                    this.limitFields(colunas[3], DataTypes.DATE);
+                    this.limitFields(colunas[4], DataTypes.HASHTAGS);
 
                     lineBin = (line).getBytes("UTF-8");
                     for(byte i : lineBin) {
