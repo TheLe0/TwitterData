@@ -18,7 +18,13 @@ abstract class Arquivo
     protected String tweetContent;
     protected String sendDate;
     protected String hashtags;
-
+    
+    public static final int ID_TWITTER = 19;
+    public static final int NAME = 25;
+    public static final int MSG_CONTENT = 254;
+    public static final int DATE = 9;
+    public static final int HASHTAGS = 10;
+    
     public void open()
     {
 
@@ -38,23 +44,23 @@ abstract class Arquivo
         switch(type)
         {
             case ID_TWITTER:
-                str = str.substring(0,18).trim();
+                str = str.substring(0,ID_TWITTER).trim();
                 this.idTwitter = str;
                 break;
             case NAME:
-                str = str.substring(0,25).trim();
+                str = str.substring(0,NAME).trim();
                 this.name = str;
                 break;
             case CONTENT:
-                str = str.substring(0,255).trim();
+                str = str.substring(0,MSG_CONTENT).trim();
                 this.tweetContent = str;
                 break;
             case DATE:
-                str = str.substring(0,9).trim();
+                str = str.substring(0,DATE).trim();
                 this.sendDate = str;
                 break;
             case HASHTAGS:
-                str = str.substring(0,10);
+                str = str.substring(0,HASHTAGS);
                 this.hashtags = str;
         }
     }
