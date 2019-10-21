@@ -5,6 +5,8 @@ import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.IOException;
 
+import arquivo.ArquivoTXT;
+
 public class TwitterSearch {
 
     private Query query;
@@ -32,7 +34,7 @@ public class TwitterSearch {
             this.query.setCount(100);
             this.result = this.twitter.search(query);
 
-            GeraArquivoTXT arq = new GeraArquivoTXT();
+            ArquivoTXT arq = new ArquivoTXT();
             for (Status status : result.getTweets()) {
 
                 String dateInString = status.getCreatedAt().toString();
