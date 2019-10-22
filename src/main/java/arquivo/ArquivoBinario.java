@@ -73,7 +73,7 @@ public class ArquivoBinario extends Arquivo{
     
     public String paddingLeft(String toPad, int width)
     {
-    	char fill = '0';
+    	char fill = '\0';
     	
     	return new String(new char[width - toPad.length()]).replace('\0', fill) + toPad;
     }
