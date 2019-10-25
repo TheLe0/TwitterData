@@ -18,13 +18,7 @@ abstract class Arquivo
     protected String tweetContent;
     protected String sendDate;
     protected String hashtags;
-    
-    public static final int ID_TWITTER = 19;
-    public static final int NAME = 25;
-    public static final int MSG_CONTENT = 254;
-    public static final int DATE = 9;
-    public static final int HASHTAGS = 10;
-    
+
     public void open()
     {
 
@@ -44,24 +38,51 @@ abstract class Arquivo
         switch(type)
         {
             case ID_TWITTER:
-                str = str.substring(0,ID_TWITTER).trim();
-                this.idTwitter = str;
+                if(str.length() < 19) {
+                    this.idTwitter= Arquivo.paddingLeft(str, 19);
+                } else {
+                    str = str.substring(0, 18).trim();
+                    this.idTwitter = str;
+                }
                 break;
             case NAME:
-                str = str.substring(0,NAME).trim();
-                this.name = str;
+                if(str.length() < 26) {
+                    this.name= Arquivo.paddingLeft(str, 26);
+                } else {
+                    str = str.substring(0, 25).trim();
+                    this.name = str;
+                }
                 break;
             case CONTENT:
-                str = str.substring(0,MSG_CONTENT).trim();
-                this.tweetContent = str;
+                if(str.length() < 256) {
+                    this.tweetContent= Arquivo.paddingLeft(str, 256);
+                } else {
+                    str = str.substring(0, 255).trim();
+                    this.tweetContent = str;
+                }
                 break;
             case DATE:
-                str = str.substring(0,DATE).trim();
-                this.sendDate = str;
+                if(str.length() < 10) {
+                    this.sendDate= Arquivo.paddingLeft(str, 10);
+                } else {
+                    str = str.substring(0, 9).trim();
+                    this.sendDate = str;
+                }
                 break;
             case HASHTAGS:
-                str = str.substring(0,HASHTAGS);
-                this.hashtags = str;
+                if(str.length() < 11) {
+                    this.hashtags= Arquivo.paddingLeft(str, 11);
+                } else {
+                    str = str.substring(0,10);
+                    this.hashtags = str;
+                }
         }
+    }
+
+    public static String paddingLeft(String toPad, int width) {
+
+        char fill = '<';
+
+        return new String(new char[width - toPad.length()]).replace('\0', fill) + toPad;
     }
 }
