@@ -1,12 +1,12 @@
-import java.io.IOException;
+import arquivo.ArquivoTexto;
 
-import arquivo.ArquivoTXT;
+import java.io.IOException;
 
 public class Inicio {
     public static void main(String[] args) throws IOException {
-    	ArquivoTXT arq = new ArquivoTXT();
-    	
-    	arq.open();
 
+        ArquivoTexto obj = new ArquivoTexto();
+        obj.setArquivoIn("tweets_limited.txt");
+        obj.writeLImited();
     }
 }
