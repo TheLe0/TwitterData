@@ -1,11 +1,11 @@
 package twitter;
 
+import arquivo.Arquivo;
+
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.IOException;
-
-import arquivo.ArquivoTXT;
 
 public class TwitterSearch {
 
@@ -19,10 +19,10 @@ public class TwitterSearch {
 
         this.cb = new ConfigurationBuilder();
         this.cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("VPqvA6pvxWAhuW3PO2zn8zJxw")
-                .setOAuthConsumerSecret("2sVCraV1zC4BnmNDHs6IkAg5fwD4frls0bYsoSXbFJ4JDiSzDO")
-                .setOAuthAccessToken("1539801186-bHMOHOJ9WVAVgjCWf3FEIhSqa6qL5YW9zKSUCtW")
-                .setOAuthAccessTokenSecret("VO3qpORS2NLcR1IevZJNTbPf4vmFoSDu3263xTBnWI1ni");
+                .setOAuthConsumerKey("")
+                .setOAuthConsumerSecret("")
+                .setOAuthAccessToken("")
+                .setOAuthAccessTokenSecret("");
         this.tf = new TwitterFactory(cb.build());
         this.twitter = tf.getInstance();
     }
@@ -30,11 +30,11 @@ public class TwitterSearch {
     public void search() {
 
         try {
-            this.query = new Query("valor aposentadoria");
+            this.query = new Query("");
             this.query.setCount(100);
             this.result = this.twitter.search(query);
 
-            ArquivoTXT arq = new ArquivoTXT();
+            Arquivo arq = new Arquivo();
             for (Status status : result.getTweets()) {
 
                 String dateInString = status.getCreatedAt().toString();
